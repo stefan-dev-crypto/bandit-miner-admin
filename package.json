@@ -1,5 +1,5 @@
 {
-  "name": "solana-wallet-ui-branded",
+  "name": "bandit-miner-admin",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -21,16 +21,24 @@
     }
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^7.0.2",
+    "@mui/material": "^7.0.2",
+    "@mui/styled-engine-sc": "^7.0.2",
     "@solana/wallet-adapter-base": "^0.9.23",
     "@solana/wallet-adapter-react": "^0.15.35",
     "@solana/wallet-adapter-react-ui": "^0.9.35",
     "@solana/wallet-adapter-wallets": "^0.19.32",
     "@solana/web3.js": "^1.95.5",
+    "axios": "^1.8.4",
     "daisyui": "^4.12.14",
     "lucide-react": "^0.462.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^7.0.1"
+    "react-router-dom": "^7.0.1",
+    "react-virtuoso": "^4.12.6",
+    "styled-components": "^6.1.17"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
