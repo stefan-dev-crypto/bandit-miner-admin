@@ -1,45 +1,89 @@
 // import * as React from "react";
 
-// export function Card() {
+// export function Card({
+//   title,
+//   value,
+//   description,
+// }: {
+//   title: string;
+//   value: string | number;
+//   description: string;
+// }): JSX.Element {
 //   return (
 //     <div>
-//       <ul className="flex flex-col md:grid grid-cols-3 gap-5 text-redis-neutral-800 max-w-2xl mx-auto p-10 mt-10">
-//         <li className="w-full text-sm font-semibold text-slate-900 p-6 bg-white border border-slate-900/10 bg-clip-padding shadow-md shadow-slate-900/5 rounded-lg flex flex-col justify-center">
-//           <span className="mb-1 text-teal-400 font-display text-5xl">45K</span>
-//           Buyers
-//         </li>
-//         <li className="w-full text-sm font-semibold text-slate-900 p-6 bg-white border border-slate-900/10 bg-clip-padding shadow-md shadow-slate-900/5 rounded-lg flex flex-col justify-center">
-//           <span className="mb-1 text-teal-400 font-display text-5xl">78K+</span>
-//           Total Value Locked
-//         </li>
-//         <li className="w-full text-sm font-semibold text-slate-900 p-6 bg-white border border-slate-900/10 bg-clip-padding shadow-md shadow-slate-900/5 rounded-lg flex flex-col justify-center">
-//           <span className="mb-1 text-teal-400 font-display text-5xl">50+</span>
-//           Total Claimed Amount
-//         </li>
-//       </ul>
+//       <div
+//         className="h-40 rounded-xl shadow-md p-6"
+//         style={{ background: "rgb(0, 255, 244)" }}
+//       >
+//         <div
+//           className="font-semibold mb-1 text-lg"
+//           style={{ color: "rgb(0, 56, 55)" }}
+//         >
+//           {title}
+//         </div>
+//         <div
+//           className="font-semibold text-5xl tracking-tight"
+//           style={{ color: "rgb(0, 56, 55)" }}
+//         >
+//           {value}
+//         </div>
+//         <div className="font-normal" style={{ color: "rgb(0, 119, 117)" }}>
+//           {description}
+//         </div>
+//       </div>
 //     </div>
 //   );
 // }
 
 import * as React from "react";
 
-export function Card() {
+type Theme = {
+  background: string;
+  titleColor: string;
+  valueColor: string;
+  descriptionColor: string;
+};
+
+type CardProps = {
+  title: string;
+  value: string | number;
+  description: string;
+  theme?: Theme;
+};
+
+export function Card({
+  title,
+  value,
+  description,
+  theme = {
+    background: "rgb(0, 255, 244)",
+    titleColor: "rgb(0, 56, 55)",
+    valueColor: "rgb(0, 56, 55)",
+    descriptionColor: "rgb(0, 119, 117)",
+  },
+}: CardProps): JSX.Element {
   return (
     <div>
-      <ul className="flex flex-col md:grid grid-cols-3 gap-5 text-redis-neutral-800 max-w-5xl mx-auto p-10 mt-10">
-        <li className="w-full text-sm font-semibold text-slate-900 p-6 bg-white border border-slate-900/10 bg-clip-padding shadow-md shadow-slate-900/5 rounded-lg flex flex-col justify-center whitespace-nowrap">
-          <span className="mb-1 text-teal-400 font-display text-5xl">45K</span>
-          Buyers
-        </li>
-        <li className="w-full text-sm font-semibold text-slate-900 p-6 bg-white border border-slate-900/10 bg-clip-padding shadow-md shadow-slate-900/5 rounded-lg flex flex-col justify-center whitespace-nowrap">
-          <span className="mb-1 text-teal-400 font-display text-5xl">78K+</span>
-          Total Value Locked
-        </li>
-        <li className="w-full text-sm font-semibold text-slate-900 p-6 bg-white border border-slate-900/10 bg-clip-padding shadow-md shadow-slate-900/5 rounded-lg flex flex-col justify-center whitespace-nowrap">
-          <span className="mb-1 text-teal-400 font-display text-5xl">50+</span>
-          Total Claimed Amount
-        </li>
-      </ul>
+      <div
+        className="h-40 rounded-xl shadow-md p-6"
+        style={{ background: theme.background }}
+      >
+        <div
+          className="font-semibold mb-1 text-lg"
+          style={{ color: theme.titleColor }}
+        >
+          {title}
+        </div>
+        <div
+          className="font-semibold text-5xl tracking-tight"
+          style={{ color: theme.valueColor }}
+        >
+          {value}
+        </div>
+        <div className="font-normal" style={{ color: theme.descriptionColor }}>
+          {description}
+        </div>
+      </div>
     </div>
   );
 }

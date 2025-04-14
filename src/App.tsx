@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { WalletConnection } from "./components/WalletConnection";
 import { useWallet } from "@solana/wallet-adapter-react";
 import * as React from "react";
-import { AdminLayout } from "./layouts/AdminLayout";
+import Home from "./pages/Home";
+// import { AdminLayout } from "./layouts/AdminLayout";
 // import { ExternalLink } from "lucide-react";
 // import { StyleSwitcher } from "./components/StyleSwitcher";
 
@@ -139,26 +140,29 @@ const AuthenticatedContent = () => {
   }
 
   return (
-    <div className="max-w-3xl mx-auto">
-      <div className="bg-base-200 p-6 rounded-lg">
-        {/* <h2 className="text-xl font-semibold mb-2">
-          Welcome to the Dashboard!
-        </h2>
-        <p className="mb-4">
-          This is an example of gated content that's only visible to users with
-          a connected wallet. Your wallet address is:{" "}
-          <code className="bg-base-300 px-2 py-1 rounded">
-            {publicKey.toBase58()}
-          </code>
-        </p>
-        <div className="text-sm text-base-content/70">
-          <p>
-            In a real application, you could display user-specific data,
-            transaction history, or other wallet-dependent content here.
-          </p>
-        </div> */}
-        <AdminLayout />
-      </div>
+    // <div className="max-w-3xl mx-auto">
+    //   <div className="bg-base-200 p-6 rounded-lg">
+    //     <h2 className="text-xl font-semibold mb-2">
+    //       Welcome to the Dashboard!
+    //     </h2>
+    //     <p className="mb-4">
+    //       This is an example of gated content that's only visible to users with
+    //       a connected wallet. Your wallet address is:{" "}
+    //       <code className="bg-base-300 px-2 py-1 rounded">
+    //         {publicKey.toBase58()}
+    //       </code>
+    //     </p>
+    //     <div className="text-sm text-base-content/70">
+    //       <p>
+    //         In a real application, you could display user-specific data,
+    //         transaction history, or other wallet-dependent content here.
+    //       </p>
+    //     </div>
+    // </div>
+    // </div>
+    <div>
+      {/* <AdminLayout /> */}
+      <Home />
     </div>
   );
 };

@@ -14,21 +14,33 @@ const columns = [
   { width: 200, label: "User Wallet", dataKey: "user" },
   {
     width: 200,
-    label: "Staking Sol Amount",
-    dataKey: "stakingSolAmount",
+    label: "Staked Sol Amount",
+    dataKey: "stakedAmount",
+    numeric: true,
+  },
+  {
+    width: 200,
+    label: "Locked Sol Amount",
+    dataKey: "lockedAmount",
+    numeric: true,
+  },
+  {
+    width: 250,
+    label: "Claimed SOL Amount",
+    dataKey: "claimedAmount",
+    numeric: true,
+  },
+  {
+    width: 250,
+    label: "Claimable SOL Amount",
+    dataKey: "claimableAmount",
     numeric: true,
   },
   { width: 100, label: "Miners", dataKey: "miners", numeric: true },
   {
     width: 250,
-    label: "Claimable SOL Amount",
-    dataKey: "beanRewards",
-    numeric: true,
-  },
-  {
-    width: 250,
     label: "Claimable Percent(%)",
-    dataKey: "miners",
+    dataKey: "claimablePercent",
     numeric: true,
   },
 ];
@@ -52,29 +64,10 @@ const VirtuosoTableComponents = {
   )),
 };
 
-export function ReactVirtualizedTable() {
+export default function ReactVirtualizedTable() {
   const [sortBy, setSortBy] = React.useState(null);
   const [sortDirection, setSortDirection] = React.useState("asc");
   const [data, setData] = React.useState([]);
-
-  // const fetchData = React.useCallback(async () => {
-  //   try {
-  //     const response = await axios.get("http://localhost:5173/api/get");
-  //     console.log("response", response);
-  //     console.log("response.data", response.data);
-  //     if (response.data && Array.isArray(response.data.res)) {
-  //       setData(response.data.res);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error.message);
-  //   }
-  // }, []);
-
-  // React.useEffect(() => {
-  //   fetchData(); // Initial fetch
-  //   const interval = setInterval(fetchData, 5000); // Refresh every 5s
-  //   return () => clearInterval(interval); // Cleanup
-  // }, [fetchData]);
 
   const handleSort = (columnKey) => {
     const isAsc = sortBy === columnKey && sortDirection === "asc";
@@ -130,15 +123,23 @@ export function ReactVirtualizedTable() {
   );
 
   return (
-    <Paper
-      style={{ height: 500, width: "100%", overflowX: "auto", minWidth: 1000 }}
-    >
-      <TableVirtuoso
-        data={data}
-        components={VirtuosoTableComponents}
-        fixedHeaderContent={fixedHeaderContent}
-        itemContent={rowContent}
-      />
-    </Paper>
+    <div className="pt-10">
+      {/* <div className="bg-gray-50 pt-10"></div> */}
+      <Paper
+        style={{
+          height: 500,
+          width: "100%",
+          overflowX: "auto",
+          minWidth: 1000,
+        }}
+      >
+        <TableVirtuoso
+          data={data}
+          components={VirtuosoTableComponents}
+          fixedHeaderContent={fixedHeaderContent}
+          itemContent={rowContent}
+        />
+      </Paper>
+    </div>
   );
 }
