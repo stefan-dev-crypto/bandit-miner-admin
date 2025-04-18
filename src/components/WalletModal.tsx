@@ -56,18 +56,6 @@ export const WalletModal: React.FC<WalletModalProps> = ({
             </button>
           ))}
         </div>
-
-        {/* <div className="mt-6 text-sm text-base-content/60 text-center">
-          <p>New to Solana wallets?</p>
-          <a
-            href="https://solana.com/ecosystem/explore?categories=wallet"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link link-primary"
-          >
-            Learn More
-          </a>
-        </div> */}
       </div>
     </div>
   );

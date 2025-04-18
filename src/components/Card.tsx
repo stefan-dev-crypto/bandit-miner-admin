@@ -1,40 +1,3 @@
-// import * as React from "react";
-
-// export function Card({
-//   title,
-//   value,
-//   description,
-// }: {
-//   title: string;
-//   value: string | number;
-//   description: string;
-// }): JSX.Element {
-//   return (
-//     <div>
-//       <div
-//         className="h-40 rounded-xl shadow-md p-6"
-//         style={{ background: "rgb(0, 255, 244)" }}
-//       >
-//         <div
-//           className="font-semibold mb-1 text-lg"
-//           style={{ color: "rgb(0, 56, 55)" }}
-//         >
-//           {title}
-//         </div>
-//         <div
-//           className="font-semibold text-5xl tracking-tight"
-//           style={{ color: "rgb(0, 56, 55)" }}
-//         >
-//           {value}
-//         </div>
-//         <div className="font-normal" style={{ color: "rgb(0, 119, 117)" }}>
-//           {description}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
 import * as React from "react";
 
 type Theme = {
@@ -47,6 +10,7 @@ type Theme = {
 type CardProps = {
   title: string;
   value: string | number;
+  symbol: string;
   description: string;
   theme?: Theme;
 };
@@ -54,6 +18,7 @@ type CardProps = {
 export function Card({
   title,
   value,
+  symbol,
   description,
   theme = {
     background: "rgb(0, 255, 244)",
@@ -78,7 +43,7 @@ export function Card({
           className="font-semibold text-5xl tracking-tight"
           style={{ color: theme.valueColor }}
         >
-          {value}
+          {value} {symbol}
         </div>
         <div className="font-normal" style={{ color: theme.descriptionColor }}>
           {description}

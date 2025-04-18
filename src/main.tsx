@@ -1,13 +1,12 @@
 // src/main.tsx
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
-import { App } from './App'
-import { WalletContextProvider } from './components/WalletContext'
-import { StyleProvider } from './components/StyleContext'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { App } from "./App";
+import { WalletContextProvider } from "./components/WalletContext";
+import { StyleProvider } from "./components/StyleContext";
 
-
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <StyleProvider>
       <WalletContextProvider>
@@ -15,4 +14,4 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       </WalletContextProvider>
     </StyleProvider>
   </React.StrictMode>
-)
+);

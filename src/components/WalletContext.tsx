@@ -19,7 +19,7 @@ interface WalletContextProviderProps {
 
 export const WalletContextProvider: FC<WalletContextProviderProps> = ({
   children,
-  endpoint = clusterApiUrl(WalletAdapterNetwork.Devnet),
+  endpoint = "https://devnet.helius-rpc.com/?api-key=75eb1c68-327f-4ff6-bb2b-669e45282ba3",
 }) => {
   const wallets = useMemo(
     // () => [new PhantomWalletAdapter(), new SolflareWalletAdapter()],
