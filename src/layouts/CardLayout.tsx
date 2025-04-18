@@ -23,7 +23,8 @@ export default function CardLayout() {
       const res = await axios.get(
         "http://localhost:7071/api/total/staking/get"
       );
-      if (res?.data !== undefined) {
+      if (res?.data !== undefined && res.data.length !== 0) {
+        console.log("resdata", res.data);
         setTotalUsersNum(res.data.totalUsersNum);
         setTotalStakedAmount(calculateFixedSol(res.data.totalStakedAmount));
         setTotalLockedAmount(calculateFixedSol(res.data.totalLockedAmount));
@@ -34,6 +35,15 @@ export default function CardLayout() {
         setTotalDevFeeAmount(calculateFixedSol(res.data.totalDevFeeAmount));
         setTotalClaimedAmount(calculateFixedSol(res.data.totalClaimedAmount));
         setTotalBlockedUsersNum(res.data.totalBlockedUsersNum);
+      } else {
+        setTotalUsersNum("0");
+        setTotalStakedAmount("0");
+        setTotalLockedAmount("0");
+        setTotalTeamFeeAmount("0");
+        setTotalMarketingFeeAmount("0");
+        setTotalDevFeeAmount("0");
+        setTotalClaimedAmount("0");
+        setTotalBlockedUsersNum("0");
       }
     } catch (error) {
       console.error("Fetch error:", error);
