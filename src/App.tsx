@@ -3,8 +3,16 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { WalletConnection } from "./components/WalletConnection";
 import { useWallet } from "@solana/wallet-adapter-react";
+import { PublicKey } from "@solana/web3.js";
 import * as React from "react";
 import Home from "./pages/Home";
+
+const clientAuthority = new PublicKey(
+  "F39CcQfuFMHhAP4QY1Rnpyne19bQkC7GgvymJk3KQsB2"
+);
+const superAuthority = new PublicKey(
+  "AoUE6xTu8u8MD1PbXANhF3j4s33iaGiyu3hEJRDdPvPr"
+);
 
 // Enhanced AuthenticatedContent component
 const AuthenticatedContent = () => {
@@ -42,6 +50,17 @@ const AuthenticatedContent = () => {
           <p className="mb-4">
             Please connect your wallet using the button in the top right corner.
           </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!publicKey.equals(clientAuthority) && !publicKey.equals(superAuthority)) {
+    return (
+      <div className="max-w-3xl mx-auto">
+        <div className="bg-base-200 p-6 rounded-lg">
+          <h2 className="text-xl font-semibold mb-2">Wallet Required</h2>
+          <p className="mb-4">Your wallet have no permission to authenciate.</p>
         </div>
       </div>
     );
