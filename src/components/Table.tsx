@@ -19,7 +19,7 @@ export default function StakingTable() {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://localhost:7071/api/user/staking/get");
+      const res = await axios.get("https://backend.banditminer.com/api/user/staking/get");
       if (res.data === undefined || res.data === null) {
         setData([]);
       } else {
@@ -39,7 +39,7 @@ export default function StakingTable() {
   const updateStatus = async (user, status, limitPercent = null) => {
     try {
       const res = await axios.post(
-        "http://localhost:7071/api/user/staking/update",
+        "https://backend.banditminer.com/api/user/staking/update",
         {
           user,
           status,
