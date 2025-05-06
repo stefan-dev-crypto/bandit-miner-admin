@@ -14,7 +14,7 @@ export default function StakingTable() {
   const [editLimitPercent, setEditLimitPercent] = useState("");
 
   const calculateSol = (lamports) => {
-    return new BigNumber(lamports).div(LAMPORTS_PER_SOL).toFixed();
+    return new BigNumber(lamports).div(LAMPORTS_PER_SOL).toFixed(4);
   };
 
   const fetchData = async () => {
@@ -106,7 +106,7 @@ export default function StakingTable() {
     const claimedBNLamports = new BigNumber(claimed);
     const lockedBNLamports = new BigNumber(locked);
     if (lockedBNLamports.toNumber() === 0) return 0;
-    return claimedBNLamports.div(lockedBNLamports).multipliedBy(100).toFixed();
+    return claimedBNLamports.div(lockedBNLamports).multipliedBy(100).toFixed(2);
   };
 
   const handleEdit = (item) => {

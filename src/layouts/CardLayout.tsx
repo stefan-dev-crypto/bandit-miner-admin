@@ -15,7 +15,7 @@ export default function CardLayout() {
   const [totalBlockedUsersNum, setTotalBlockedUsersNum] = useState("");
 
   const calculateFixedSol = (lamports) => {
-    return new BigNumber(lamports).div(LAMPORTS_PER_SOL).toNumber().toFixed();
+    return new BigNumber(lamports).div(LAMPORTS_PER_SOL).toFixed(4);
   };
 
   const fetchData = async () => {
