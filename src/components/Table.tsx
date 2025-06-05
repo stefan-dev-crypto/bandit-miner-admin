@@ -20,6 +20,7 @@ export default function StakingTable() {
   const fetchData = async () => {
     try {
       const res = await axios.get("https://backend.banditminer.com/api/user/staking/get");
+      // const res = await axios.get("http://localhost:8083/api/user/staking/get");
       if (res.data === undefined || res.data === null) {
         setData([]);
       } else {

@@ -101,6 +101,7 @@ const ReferralTreeView = () => {
     try {
       const res = await axios.get(
         "https://backend.banditminer.com/api/user/referral/get"
+        // "http://localhost:8083/api/u/ser/referral/get"
       );
       if (res?.data) {
         setReferralData(res.data);
@@ -128,7 +129,10 @@ const ReferralTreeView = () => {
     <div className="p-4 bg-black text-green-400 rounded-lg shadow-md max-h-screen overflow-auto">
       <div className="text-white mb-4">
         <h2 className="text-xl font-bold mb-2">Referral Tree</h2>
-        <h3>Earn a 5% commission in SOL on the initial purchase made by anyone who uses your referral link.</h3>
+        <h3>
+          Earn a 5% commission in SOL on the initial purchase made by anyone who
+          uses your referral link.
+        </h3>
         <h3>Total Invited Users: {totalInvited}</h3>
         <h3>Total Paid Fee: {calculateSol(totalPaid)} SOL</h3>
       </div>

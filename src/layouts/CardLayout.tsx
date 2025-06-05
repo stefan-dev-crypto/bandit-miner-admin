@@ -15,13 +15,17 @@ export default function CardLayout() {
   const [totalBlockedUsersNum, setTotalBlockedUsersNum] = useState("");
 
   const calculateFixedSol = (lamports) => {
-    return new BigNumber(lamports).div(LAMPORTS_PER_SOL).toFixed(4);
+    return new BigNumber(lamports)
+      .div(LAMPORTS_PER_SOL)
+      .toFixed(4)
+      .replace(/\.?0+$/, ""); // trims trailing zeros and optional dot
   };
 
   const fetchData = async () => {
     try {
       const res = await axios.get(
         "https://backend.banditminer.com/api/total/staking/get"
+        // "http://localhost:8083/api/total/staking/get"
       );
       if (res?.data !== undefined) {
         setTotalUsersNum(res.data.totalUsersNum);
