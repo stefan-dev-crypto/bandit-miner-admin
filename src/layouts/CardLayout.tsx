@@ -4,6 +4,8 @@ import { BigNumber } from "bignumber.js";
 import { Card } from "../components/Card";
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 
+import * as keys from "../contracts/keys";
+
 export default function CardLayout() {
   const [totalUsersNum, setTotalUsersNum] = useState("");
   const [totalStakedAmount, setTotalStakedAmount] = useState("");
@@ -13,6 +15,9 @@ export default function CardLayout() {
   const [totalDevFeeAmount, setTotalDevFeeAmount] = useState("");
   const [totalClaimedAmount, setTotalClaimedAmount] = useState("");
   const [totalBlockedUsersNum, setTotalBlockedUsersNum] = useState("");
+
+    const [vaultkey, setVaultKey] = useState("");
+  const [solScanUrl, setSolScanUrl] = useState("");
 
   const calculateFixedSol = (lamports) => {
     return new BigNumber(lamports)
@@ -44,6 +49,18 @@ export default function CardLayout() {
     }
   };
 
+    useEffect(() => {
+    const fetchVaultKey = async () => {
+      const key = await keys.getVaultKey();
+      setVaultKey(key.toBase58());
+
+      const url = "https://solscan.io/tx/" + key.toBase58() + "?cluster=devnet";
+      setSolScanUrl(url);
+    };
+
+    fetchVaultKey();
+  }, []);
+
   useEffect(() => {
     fetchData();
     const interval = setInterval(fetchData, 10000);
@@ -74,7 +91,15 @@ export default function CardLayout() {
   ];
 
   return (
-    <div className="grid grid-cols-4 gap-x-6 gap-y-4">
+    <div>
+      <h1 className="flex flex-rowtext-xl pb-3 gap-5">
+        <span className="text-base text-blue-600">Vault Wallet Addresss:</span>
+        {vaultkey}
+        <span className="text-base text-red-600">SolScan Url:</span>
+        {solScanUrl}
+      </h1>
+          <div className="grid grid-cols-4 gap-x-6 gap-y-4">
+
       <Card
         title="Total Users"
         value={totalUsersNum}
@@ -164,5 +189,6 @@ export default function CardLayout() {
 
       {/* Continue rendering more Cards as needed */}
     </div>
+      </div>
   );
 }

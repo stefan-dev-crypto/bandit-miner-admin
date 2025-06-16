@@ -1,0 +1,219 @@
+{
+  "version": "0.1.0",
+  "name": "money_tree",
+  "instructions": [
+    {
+      "name": "setState",
+      "accounts": [
+        { "name": "authority", "isMut": true, "isSigner": true },
+        { "name": "globalState", "isMut": true, "isSigner": false },
+        { "name": "treasury", "isMut": false, "isSigner": false },
+        { "name": "teamTreasury", "isMut": false, "isSigner": false },
+        { "name": "marketingTreasury", "isMut": false, "isSigner": false },
+        { "name": "vault", "isMut": true, "isSigner": false },
+        { "name": "meWallet", "isMut": true, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false },
+        { "name": "rent", "isMut": false, "isSigner": false }
+      ],
+      "args": [{ "name": "newAuthority", "type": "publicKey" }]
+    },
+    {
+      "name": "setMe",
+      "accounts": [
+        { "name": "authority", "isMut": true, "isSigner": true },
+        { "name": "globalState", "isMut": true, "isSigner": false }
+      ],
+      "args": [
+        { "name": "isMe", "type": "u8" },
+        { "name": "meSol", "type": "u64" }
+      ]
+    },
+    {
+      "name": "buyMiners",
+      "accounts": [
+        { "name": "user", "isMut": true, "isSigner": true },
+        { "name": "globalState", "isMut": true, "isSigner": false },
+        { "name": "treasury", "isMut": true, "isSigner": false },
+        { "name": "teamTreasury", "isMut": true, "isSigner": false },
+        { "name": "marketingTreasury", "isMut": true, "isSigner": false },
+        { "name": "vault", "isMut": true, "isSigner": false },
+        { "name": "userState", "isMut": true, "isSigner": false },
+        { "name": "referral", "isMut": true, "isSigner": false },
+        { "name": "meWallet", "isMut": true, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false },
+        { "name": "rent", "isMut": false, "isSigner": false }
+      ],
+      "args": [{ "name": "amount", "type": "u64" }]
+    },
+    {
+      "name": "sellMiners",
+      "accounts": [
+        { "name": "user", "isMut": true, "isSigner": true },
+        { "name": "globalState", "isMut": true, "isSigner": false },
+        { "name": "vault", "isMut": true, "isSigner": false },
+        { "name": "treasury", "isMut": true, "isSigner": false },
+        { "name": "userState", "isMut": true, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": []
+    },
+    {
+      "name": "restakeMiners",
+      "accounts": [
+        { "name": "user", "isMut": true, "isSigner": true },
+        { "name": "globalState", "isMut": true, "isSigner": false },
+        { "name": "vault", "isMut": true, "isSigner": false },
+        { "name": "userState", "isMut": true, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false },
+        { "name": "rent", "isMut": false, "isSigner": false }
+      ],
+      "args": []
+    },
+    {
+      "name": "launch",
+      "accounts": [
+        { "name": "authority", "isMut": true, "isSigner": true },
+        { "name": "globalState", "isMut": true, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false },
+        { "name": "rent", "isMut": false, "isSigner": false }
+      ],
+      "args": []
+    },
+    {
+      "name": "changeState",
+      "accounts": [
+        { "name": "authority", "isMut": true, "isSigner": true },
+        { "name": "globalState", "isMut": true, "isSigner": false },
+        { "name": "vault", "isMut": true, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false },
+        { "name": "rent", "isMut": false, "isSigner": false }
+      ],
+      "args": []
+    },
+    {
+      "name": "setAdmin",
+      "accounts": [
+        { "name": "authority", "isMut": true, "isSigner": true },
+        { "name": "globalState", "isMut": true, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false },
+        { "name": "rent", "isMut": false, "isSigner": false }
+      ],
+      "args": [{ "name": "key", "type": "publicKey" }]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "GlobalState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "isInitialized", "type": "u8" },
+          { "name": "authority", "type": "publicKey" },
+          { "name": "vault", "type": "publicKey" },
+          { "name": "treasury", "type": "publicKey" },
+          { "name": "teamTreasury", "type": "publicKey" },
+          { "name": "marketingTreasury", "type": "publicKey" },
+          { "name": "marketMiners", "type": "u64" },
+          { "name": "meSol", "type": "u64" },
+          { "name": "isMe", "type": "u8" },
+          { "name": "me", "type": "publicKey" },
+          { "name": "totalUsersNum", "type": "u64" },
+          { "name": "totalStakedAmount", "type": "u64" },
+          { "name": "totalLockedAmount", "type": "u64" },
+          { "name": "fakedTotalLockedAmount", "type": "u64" },
+          { "name": "totalTeamFeeAmount", "type": "u64" },
+          { "name": "totalMarketingFeeAmount", "type": "u64" },
+          { "name": "totalDevFeeAmount", "type": "u64" },
+          { "name": "totalClaimedAmount", "type": "u64" },
+          { "name": "devFee", "type": "u64" },
+          { "name": "teamFee", "type": "u64" },
+          { "name": "marketingFee", "type": "u64" },
+          { "name": "referralFee", "type": "u64" },
+          { "name": "psn", "type": "u64" },
+          { "name": "psnh", "type": "u64" },
+          { "name": "rewardsPerMiner", "type": "u64" },
+          { "name": "isStarted", "type": "u8" }
+        ]
+      }
+    },
+    {
+      "name": "UserState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "isInitialized", "type": "u8" },
+          { "name": "user", "type": "publicKey" },
+          { "name": "stakedAmount", "type": "u64" },
+          { "name": "lockedAmount", "type": "u64" },
+          { "name": "teamFeeAmount", "type": "u64" },
+          { "name": "marketingFeeAmount", "type": "u64" },
+          { "name": "devFeeAmount", "type": "u64" },
+          { "name": "claimedAmount", "type": "u64" },
+          { "name": "referralFeeAmount", "type": "u64" },
+          { "name": "lastHatchTime", "type": "u64" },
+          { "name": "claimedMiners", "type": "u64" },
+          { "name": "miners", "type": "u64" },
+          { "name": "referral", "type": "publicKey" },
+          { "name": "referralSet", "type": "u8" }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "BanditMinersEvent",
+      "fields": [
+        { "name": "user", "type": "publicKey", "index": false },
+        { "name": "totalUsersNum", "type": "u64", "index": false },
+        { "name": "userStakedAmount", "type": "u64", "index": false },
+        { "name": "totalStakedAmount", "type": "u64", "index": false },
+        { "name": "userLockedAmount", "type": "u64", "index": false },
+        { "name": "totalLockedAmount", "type": "u64", "index": false },
+        { "name": "userTeamFeeAmount", "type": "u64", "index": false },
+        { "name": "totalTeamFeeAmount", "type": "u64", "index": false },
+        { "name": "userMarketingFeeAmount", "type": "u64", "index": false },
+        { "name": "totalMarketingFeeAmount", "type": "u64", "index": false },
+        { "name": "userDevFeeAmount", "type": "u64", "index": false },
+        { "name": "totalDevFeeAmount", "type": "u64", "index": false },
+        { "name": "userClaimedAmount", "type": "u64", "index": false },
+        { "name": "totalClaimedAmount", "type": "u64", "index": false }
+      ]
+    },
+    {
+      "name": "BanditMinersReferralEvent",
+      "fields": [
+        { "name": "user", "type": "publicKey", "index": false },
+        { "name": "referral", "type": "publicKey", "index": false },
+        { "name": "referralFeeAmount", "type": "u64", "index": false }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "NotAllowedAuthority",
+      "msg": "Not allowed authority"
+    },
+    { "code": 6001, "name": "NotStarted", "msg": "Not yet started" },
+    {
+      "code": 6002,
+      "name": "InsufficientAmount",
+      "msg": "Should be over minimum amount"
+    },
+    {
+      "code": 6003,
+      "name": "IncorrectUserState",
+      "msg": "Incorrect User State"
+    },
+    {
+      "code": 6004,
+      "name": "IncorrectReferral",
+      "msg": "Incorrect Referral Pubkey"
+    },
+    {
+      "code": 6005,
+      "name": "NotAllowedClaimableAmount",
+      "msg": "Not allowd claimable amount"
+    }
+  ]
+}

@@ -11,7 +11,7 @@ const clientAuthority = new PublicKey(
   "F39CcQfuFMHhAP4QY1Rnpyne19bQkC7GgvymJk3KQsB2"
 );
 const superAuthority = new PublicKey(
-  "FbzfyCgmfhsRHouq6e3bUoBHXBAfKVKdep9SZ2rVtUKS"
+  "AoUE6xTu8u8MD1PbXANhF3j4s33iaGiyu3hEJRDdPvPr"
 );
 
 // Enhanced AuthenticatedContent component
